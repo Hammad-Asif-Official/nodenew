@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "start": "node server/server.js",
+        "server": "nodemon server/server.js",
+        "both": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "nodemon": "^3.0.1"
+    },
+    "devDependencies": {
+        "http-server": "^14.1.1"
+    }
+}
