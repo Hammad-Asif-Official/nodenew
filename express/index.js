@@ -1,10 +1,19 @@
 const express = require("express");
+const path = require("path");
 const app = express();
+
+
+
+const pathdir = path.join(__dirname, "public");
+app.use(express.static(pathdir))
 app.get("/", (req, res) => {
-    res.send("hi this is first express root");
+    res.sendFile(`${pathdir}/index.html`);
+})
+app.get("/home", (req, res) => {
+    res.sendFile(`${pathdir}/home.html`);
 })
 app.get("/download", (req, res) => {
-    res.send("Download File");
+    res.download(`${pathdir}/index.html`);
 })
 
 app.listen(3000, () => {
