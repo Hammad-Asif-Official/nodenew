@@ -2,20 +2,21 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+app.set("view engine", "ejs");
+console.log(app.get("view engine"));
 
-
-const pathdir = path.join(__dirname, "public");
-app.use(express.static(pathdir))
 app.get("/", (req, res) => {
-    res.sendFile(`${pathdir}/index.html`);
-})
+    res.render("index", {
+        title: "index file"
+    })
+});
 app.get("/home", (req, res) => {
-    res.sendFile(`${pathdir}/home.html`);
-})
-app.get("/download", (req, res) => {
-    res.download(`${pathdir}/index.html`);
-})
+    res.render("home", {
+        title: "home file"
+    })
+});
+app.get("/download", (req, res) => {});
 
 app.listen(3000, () => {
     console.log("server establish");
-})
+});
